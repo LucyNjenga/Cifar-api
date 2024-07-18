@@ -8,6 +8,16 @@ import io
 
 app = FastAPI() #helps create the routes
 
+@app.get("/")
+async def read_root():
+
+    return {
+        "message": "Welcome to the Cifar-10 API!.This model is able to predict the images uploaded depending on the class names indicated in the dataset",
+        "instructions": {
+            "POST /predict/": "Upload a grayscale image of a handwritten digit (28x28 pixels) to get the predicted class."
+        }
+    }
+
 # Ensure the model file exists
 model_path = 'cnn_model.keras'
 if not os.path.exists(model_path):
